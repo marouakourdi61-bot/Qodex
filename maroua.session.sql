@@ -198,6 +198,23 @@ SELECT * FROM resultats ORDER BY date_passage DESC LIMIT 3;
 SELECT  quiz.titre_quiz, Categories.nom_categorie 
  FROM quiz LEFT JOIN Categories ON quiz.id_categorie = Categories.id_categorie;
 
+ --@block  Ajouter une requête qui compte combien d'étudiants ont passé chaque quiz
+
+SELECT quiz.titre_quiz, COUNT(Resultats.id_etudiant) AS nombre_etudiants FROM quiz
+JOIN Resultats ON quiz.id_quiz = Resultats.id_quiz
+GROUP BY quiz.id_quiz, quiz.titre_quiz;
+
+--@block  Créer une requête qui affiche le meilleur score pour chaque quiz
+
+SELECT quiz.titre_quiz, Max(resultats.score) As Max_score FROM quiz JOIN resultats ON quiz.id_quiz = resultats.id_quiz
+GROUP BY quiz.id_quiz, quiz.titre_quiz
+
+
+
+
+
+
+
 
 
 
